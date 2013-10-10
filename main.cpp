@@ -11,6 +11,21 @@
 
 using namespace std;
 
+int         n_m; //Number of meetings
+int         n_e; //Number of employees
+int         n_s; //Number of time slots
+int         travel[MAX_MEET][MAX_MEET]; // table for travaling from one meeting to another
+int         timeArr[MAX_MEET]; //make it 1 if assigned
+vector<int> employee[MAX_EMPLY];
+
+bool assignment_complete() {
+    for(int i = 0; i < n_m; i++) {
+        if(timeArr[i] == 0)
+            return false;
+    }
+    return true;
+}
+
 vector<int> explode(const string &delimiter, const string &str) {
     int len = str.length();
     int dlen = delimiter.length();
@@ -29,16 +44,12 @@ vector<int> explode(const string &delimiter, const string &str) {
     return arr;
 }
 
-void solve(int n_m, int n_e, int n_s, int travel[MAX_MEET][MAX_MEET], vector<int>* employee){
+void solve(){
+
 }
 
 int main(){
-    int         n_m; //Number of meetings
-    int         n_e; //Number of employees
-    int         n_s; //Number of time slots
-    string      line; //temp line for reading lines
-    int         travel[MAX_MEET][MAX_MEET]; // table for travaling from one meeting to another
-    vector<int> employee[MAX_EMPLY];
+    string line; //temp line for reading lines
 
     /* Initial the values from the problem */
     __OPENFILE
@@ -50,7 +61,6 @@ int main(){
     for (int i = 0; i < n_e; i++ ) {
         getline(cin, line);
         employee[i] = explode(" ", line);
-        cout<<line<<endl;
     }
 
     for (int i = 0; i < n_m; i++) {
@@ -59,7 +69,9 @@ int main(){
         }
     }
 
-    solve(n_m, n_e, n_s, travel, employee);
+    memset(timeArr,0,sizeof(timeArr)); 
+    
+    solve();
 
     return 0;
 }
