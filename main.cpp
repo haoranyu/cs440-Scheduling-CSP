@@ -1,3 +1,9 @@
+/*
+ * variables: meetings 
+ * domains of the variables: the set of time slot
+ * constraints: employee must attend they need to (No time overlap for meetings and enough time for them to switch between meetings)
+ */
+
 #include <iostream>
 #include <cstdlib>
 #include <cstring>
@@ -15,12 +21,12 @@ int         n_m; //Number of meetings
 int         n_e; //Number of employees
 int         n_s; //Number of time slots
 int         travel[MAX_MEET][MAX_MEET]; // table for travaling from one meeting to another
-int         timeArr[MAX_MEET]; //make it 1 if assigned
+int         meet[MAX_MEET]; //make it not zero if assigned
 vector<int> employee[MAX_EMPLY];
 
 bool assignment_complete() {
     for(int i = 0; i < n_m; i++) {
-        if(timeArr[i] == 0)
+        if(meet[i] == 0)
             return false;
     }
     return true;
@@ -47,7 +53,12 @@ vector<int> explode(const string &delimiter, const string &str) {
 void solve(){
 
 }
+int mvr(){
 
+}
+void sign_var(int var, int value){
+    meet[var] = value;
+}
 int main(){
     string line; //temp line for reading lines
 
@@ -69,7 +80,7 @@ int main(){
         }
     }
 
-    memset(timeArr,0,sizeof(timeArr)); 
+    memset(meet,0,sizeof(meet)); 
     
     solve();
 
