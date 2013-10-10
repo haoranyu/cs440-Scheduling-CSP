@@ -9,7 +9,9 @@
 #include <cstring>
 #include <string>
 #include <vector>
+#include <algorithm>
 #include <cstdio>
+#include <cmath>
 
 #define MAX_EMPLY 100
 #define MAX_MEET 100
@@ -50,9 +52,28 @@ vector<int> explode(const string &delimiter, const string &str) {
     arr.push_back(atoi(str.substr(k, i - k).c_str()));
     return arr;
 }
-bool is_legal(int meet, int time){
-
-
+bool is_needed_by_employee(int m_idx, int e_idx){
+    vector<int>::iterator result = find((employee[e_idx]).begin(), (employee[e_idx]).end() ,m_idx);
+    if(result == (employee[e_idx]).end())
+        return false;
+    else
+        return true;
+}
+bool is_legal(int m_idx, int t_idx){
+    if (meet[m_idx] != 0)
+        return false;
+    for (int i = 0; i < n_m; i++){
+        if(meet[i] != 0){
+            for (int j = 0; j < n_e; j++){
+                if(is_needed_by_employee(i, j) && is_needed_by_employee(m_idx, j) ){
+                    if(abs(t_idx - meet[i]) < travel[i][m_idx]){
+                        return false;
+                    }
+                }
+            }
+        }
+    }
+    return true;
 }
 int mvr(){
 
