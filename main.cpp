@@ -29,6 +29,8 @@ vector<int> explode(const string &delimiter, const string &str) {
     return arr;
 }
 
+void solve(int n_m, int n_e, int n_s, int travel[MAX_MEET][MAX_MEET], vector<int>* employee){
+}
 
 int main(){
     int         n_m; //Number of meetings
@@ -38,6 +40,7 @@ int main(){
     int         travel[MAX_MEET][MAX_MEET]; // table for travaling from one meeting to another
     vector<int> employee[MAX_EMPLY];
 
+    /* Initial the values from the problem */
     __OPENFILE
 
     cin >> n_m >> n_e >> n_s;
@@ -55,6 +58,8 @@ int main(){
             cin >> travel[i][j];
         }
     }
+
+    solve(n_m, n_e, n_s, travel, employee);
 
     return 0;
 }
