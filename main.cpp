@@ -23,6 +23,7 @@ int         n_s; //Number of time slots
 int         travel[MAX_MEET][MAX_MEET]; // table for travaling from one meeting to another
 int         meet[MAX_MEET]; //make it not zero if assigned
 vector<int> employee[MAX_EMPLY];
+int         remain[MAX_MEET];
 
 bool assignment_complete() {
     for(int i = 0; i < n_m; i++) {
@@ -56,8 +57,23 @@ void solve(){
 int mvr(){
 
 }
+int get_remain_val(int i){
+    return 0;
+}
+
+void set_remain_val(){
+    for(int i = 0; i < n_m; i++){
+        if(meet[i] != 0){
+            remain[i] = -1;
+        }
+        else{
+            remain[i] = get_remain_val(i);
+        }
+    }
+}
 void sign_var(int var, int value){
     meet[var] = value;
+    set_remain_val();
 }
 int main(){
     string line; //temp line for reading lines
