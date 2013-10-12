@@ -85,12 +85,12 @@ void solve(){
 }
 
 int get_remain_val(int i){
-
+    for (int i = 0; i < n_s; )
     return 0;
 }
 
 void set_remain_val(){
-    for(int i = 0; i < n_s; i++){
+    for (int i = 0; i < n_s; i++){// I am still not sure n_s of n_m
         if(meet[i] != 0){
             remain[i] = -1;
         }
